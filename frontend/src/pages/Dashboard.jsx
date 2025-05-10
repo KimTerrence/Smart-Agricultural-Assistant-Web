@@ -16,7 +16,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import Container from '../components/Container';
-import { LayoutDashboard, Database, Users, LogOut } from 'lucide-react';
+import { LayoutDashboard, Database, Users, LogOut, Wheat, Bug} from 'lucide-react';
 
 ChartJS.register(
   ArcElement,
@@ -107,6 +107,22 @@ const Dashboard = () => {
                 <a href="#" className='flex items-center gap-3 text-gray-700 hover:bg-blue-100 px-4 py-2 rounded-lg transition'>
                 <Users className='w-5 h-5' />
                 Users
+                </a>
+                <a href="#" className='flex items-center gap-3 text-gray-700 hover:bg-blue-100 px-4 py-2 rounded-lg transition'>
+                <Bug />
+                Rice Pest
+                </a>
+                <a href="#rice_pest" className='flex items-center gap-3 text-gray-700 hover:bg-blue-100 px-4 py-2 rounded-lg transition'>
+                <Wheat />
+                Rice Desease
+                </a>
+                <a href="#" className='flex items-center gap-3 text-gray-700 hover:bg-blue-100 px-4 py-2 rounded-lg transition'>
+                <Bug />
+                Corn Pest
+                </a>
+                <a href="#" className='flex items-center gap-3 text-gray-700 hover:bg-blue-100 px-4 py-2 rounded-lg transition'>
+                <Wheat />
+                Corn Desease
                 </a>
                 <a href="#" className='flex items-center gap-3 text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg transition'>
                 <LogOut className='w-5 h-5' />
