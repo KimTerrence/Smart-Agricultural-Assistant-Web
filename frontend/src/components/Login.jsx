@@ -1,13 +1,24 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { login } from '../services/authService';
+
 
 export default function Login({ isOpen, onClose }){
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [form, setForm] = useState({ email: '', password: '' });
 
-    function handleLogin(){
-        navigate("/Dashboard")
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await login(form);
+      localStorage.setItem('token', res.data.token);
+      alert('Logged in successfully');
+    } catch (err) {
+      alert(err.response.data.message);
     }
- 
+  };
+
     return (
         <>
         {/* Backdrop */}
@@ -33,13 +44,14 @@ export default function Login({ isOpen, onClose }){
             </button>
             <h2 className="text-3xl font-semibold mb-6 text-gray-800">Hello! Welcome 👋</h2>
   
-            <form className="space-y-5">
+            <form className="space-y-5" onSubmit={handleSubmit}>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                 <input
                   type="email"
                   placeholder="your@example.com"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-100"
+                  onChange={e => setForm({ ...form, email: e.target.value })} 
                 />
               </div>
               <div>
@@ -48,9 +60,10 @@ export default function Login({ isOpen, onClose }){
                   type="password"
                   placeholder="••••••••"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-100"
+                  onChange={e => setForm({ ...form, password: e.target.value })}
                 />
               </div>
-              <button onClick={handleLogin}
+              <button type="submit"
                 className="w-full bg-green-400  py-2 rounded-lg hover:bg-green-500 transition duration-300"
               >
                 Login
