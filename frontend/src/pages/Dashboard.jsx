@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Bar, Line, Doughnut } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -90,6 +91,13 @@ const Dashboard = () => {
     ],
   };
 
+  const navigate = useNavigate();
+
+  {/*-----handle logout function-----*/}
+  const handleLogout = () => {
+   navigate("/") 
+  }
+
   return (
     <Container>
       <div className='w-full flex justify-between gap-5'>
@@ -124,10 +132,10 @@ const Dashboard = () => {
                 <Wheat />
                 Corn Desease
                 </a>
-                <a href="#" className='flex items-center gap-3 text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg transition'>
+                <button onClick={handleLogout}  className='flex items-center gap-3 text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg transition cursor-pointer'>
                 <LogOut className='w-5 h-5' />
                 Logout
-                </a>
+                </button>
             </nav>
         </div>
 
