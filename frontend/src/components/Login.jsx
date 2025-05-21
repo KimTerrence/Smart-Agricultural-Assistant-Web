@@ -14,6 +14,7 @@ export default function Login({ isOpen, onClose }){
       const res = await login(form);
       localStorage.setItem('token', res.data.token);
       alert('Logged in successfully');
+      navigate('/Dashboard')
     } catch (err) {
       alert(err.response.data.message);
     }
